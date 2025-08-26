@@ -6,6 +6,9 @@
 Aplicar y demostrar el uso práctico de Azure DevOps mediante un proyecto real de desarrollo.
 Este trabajo se aprueba solo si podés explicar qué hiciste, por qué lo hiciste y cómo lo resolviste.
 
+## Pasos realizados: 
+
+
 ## Paso 1
 creamos la organizacion
 
