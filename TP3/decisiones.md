@@ -3,8 +3,8 @@
 # Alumnos: Francisco Tomas Mateos y Tomas Huspenina
 
 # 🎯 Objetivo
-## Aplicar y demostrar el uso práctico de Azure DevOps mediante un proyecto real de desarrollo.
-## Este trabajo se aprueba solo si podés explicar qué hiciste, por qué lo hiciste y cómo lo resolviste.
+Aplicar y demostrar el uso práctico de Azure DevOps mediante un proyecto real de desarrollo.
+Este trabajo se aprueba solo si podés explicar qué hiciste, por qué lo hiciste y cómo lo resolviste.
 
 ## Paso 1
 creamos la organizacion
