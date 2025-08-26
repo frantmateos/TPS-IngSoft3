@@ -1,6 +1,10 @@
-# Trabajo Practico 3
+# Trabajo Práctico 03 – Introducción a Azure DevOps (2025)
 
 # Alumnos: Francisco Tomas Mateos y Tomas Huspenina
+
+# 🎯 Objetivo
+## Aplicar y demostrar el uso práctico de Azure DevOps mediante un proyecto real de desarrollo.
+## Este trabajo se aprueba solo si podés explicar qué hiciste, por qué lo hiciste y cómo lo resolviste.
 
 ## Paso 1
 creamos la organizacion
