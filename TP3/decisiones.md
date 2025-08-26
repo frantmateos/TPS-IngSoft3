@@ -10,6 +10,7 @@ Este trabajo se aprueba solo si podés explicar qué hiciste, por qué lo hicist
 
 
 ## Paso 1
+
 creamos la organizacion
 
 ![creamos organizacion](images/img1.png)
