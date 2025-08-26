@@ -4,11 +4,11 @@
 #Paso 1
 creamos la organizacion
 
-(images/img1.png)
+![creamos organizacion](images/img1.png)
 
 ##Paso2
 Creamos un proyecto
 
-(images/img2.png)
+![creamos proyecto](images/img2.png)
 
 #dd
