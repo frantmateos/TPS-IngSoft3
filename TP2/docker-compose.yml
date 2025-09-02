@@ -1,0 +1,96 @@
+services:
+  db_qa:
+    image: mysql:8.0.43
+    container_name: db_qa
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootqa
+      MYSQL_DATABASE: arqsoft1cursos_qa
+      MYSQL_USER: appqa
+      MYSQL_PASSWORD: QaPass
+    volumes:
+      - db_data_qa:/var/lib/mysql
+      - ./db/init/qa:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u$$MYSQL_USER -p\"$$MYSQL_PASSWORD\""]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+
+  backend_qa:
+    image: tomihuspenina/ingsoft-backend:v1.4
+    container_name: backend_qa
+    environment:
+      APP_ENV: qa
+      PORT: 8080
+      DB_HOST: db_qa
+      DB_PORT: 3306
+      DB_USER: appqa
+      DB_PASS: QaPass
+      DB_NAME: arqsoft1cursos_qa
+      LOG_LEVEL: debug
+    ports: ["8081:8080"]
+    depends_on:
+      db_qa:
+        condition: service_healthy
+    restart: on-failure
+    volumes:
+      - ./backend/uploads:/app/uploads
+
+  db_prod:
+    image: mysql:8.0.43
+    container_name: db_prod
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: superProd!
+      MYSQL_DATABASE: arqsoft1cursos_prod
+      MYSQL_USER: app
+      MYSQL_PASSWORD: ProdPass
+    volumes:
+      - db_data_prod:/var/lib/mysql
+      - ./db/init/prod:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u$$MYSQL_USER -p\"$$MYSQL_PASSWORD\""]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+
+  backend_prod:
+    image: tomihuspenina/ingsoft-backend:v1.4
+    container_name: backend_prod
+    environment:
+      APP_ENV: prod
+      PORT: 8080
+      DB_HOST: db_prod
+      DB_PORT: 3306
+      DB_USER: app
+      DB_PASS: ProdPass
+      DB_NAME: arqsoft1cursos_prod
+      LOG_LEVEL: info
+    ports: ["8080:8080"]
+    depends_on:
+      db_prod:
+        condition: service_healthy
+    restart: on-failure
+    volumes:
+      - ./backend/uploads:/app/uploads
+
+  frontend_prod:
+    image: tomihuspenina/ingsoft-frontend:v1.1
+    environment:
+      HOST: 0.0.0.0
+      REACT_APP_BACKEND_URL: "http://localhost:8080"
+    ports: ["3000:3000"]
+    depends_on: [backend_prod]
+
+  frontend_qa:
+    image: tomihuspenina/ingsoft-frontend:v1.1
+    environment:
+      HOST: 0.0.0.0
+      REACT_APP_BACKEND_URL: "http://localhost:8081"
+    ports: ["3001:3000"]
+    depends_on: [backend_qa]
+
+volumes:
+  db_data_qa: {}
+  db_data_prod: {}
