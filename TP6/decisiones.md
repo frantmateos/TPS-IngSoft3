@@ -17,3 +17,6 @@ Test de creacion de usuario
 
 Agregamos varios tests para el backend, creacion de usuario exitoso y no exitoso y obtener usuarios de forma exitosa y no exitosa
 ![test back 4](<images/Imagen de WhatsApp 2025-11-11 a las 01.44.32_00e2590b.jpg>)
+
+Resultados Sonarcloud
+![test back 4](<images/image.jpg>)
